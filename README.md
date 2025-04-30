@@ -25,51 +25,55 @@ Using the HoughLinesP(),detect line co-ordinates for every points in the images.
 ## PROGRAM
 #### DONE BY:MARINO SARISHA T
 #### REG NO:212223240084
-```
+```python
 plt.figure(figsize = [15,4])
 plt.subplot(121); plt.hist(img.ravel(),256,range = [0, 256]); plt.title('Original Image')
 plt.subplot(122); plt.hist(img_eq.ravel(),256,range = [0, 256]); plt.title('Histogram Equalized')
 ```
-```
+```python
 image = cv2.imread('chess.png')
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 ```
-```
+```python
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  
 plt.title("Input Image")
 plt.axis('off')
+plt.show()
 ```
 ![Screenshot 2025-04-30 110626](https://github.com/user-attachments/assets/f4bb5694-8d77-43dc-999c-6a7a74082443)
 
-```
+```python
 plt.imshow(gray_image, cmap='gray')
 plt.title("Grayscale Image")
 plt.axis('off')
+plt.show()
 ```
 ![Screenshot 2025-04-30 110633](https://github.com/user-attachments/assets/080b4f51-0be9-4cfd-aade-707395cf9d46)
 
 ```
 edges = cv2.Canny(gray_image, 50, 150)
 ```
-```
+```python
 plt.imshow(edges, cmap='gray')
 plt.title("Canny Edge Detector")
 plt.axis('off')
+plt.show()
 ```
 ![Screenshot 2025-04-30 110642](https://github.com/user-attachments/assets/063e749a-aeda-4805-aee3-e206655a23c5)
 
-```
+```python
 lines = cv2.HoughLinesP(edges, 1, np.pi / 180, 100, minLineLength=50, maxLineGap=10)
 ```
-```
+```python
 for line in lines:
     x1, y1, x2, y2 = line[0] 
     cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 ```
-```
+```python
 plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))  
 plt.title("Result of Hough Transform")
 plt.axis('off')
+plt.show()
 ```
 ![Screenshot 2025-04-30 110651](https://github.com/user-attachments/assets/ab3f41d9-4378-4420-93e4-f06723d52885)
 
